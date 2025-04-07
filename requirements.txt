@@ -1,0 +1,10 @@
+langchain
+langchain-community
+faiss-cpu
+sentence-transformers
+scikit-learn
+PyPDF2
+numpy
+transformers
+huggingface_hub
+ollama
