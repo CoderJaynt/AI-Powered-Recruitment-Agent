@@ -1,13 +1,12 @@
 <div align="center">
 
 <!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=7c5cfc&height=200&section=header&text=AI%20Recruitment%20Agent&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=Agentic%20resume%20intelligence%20powered%20by%20LangGraph&descAlignY=58&descSize=18" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=7c5cfc&height=200&section=header&text=AI%20Recruitment%20Agent&fontSize=48&fontColor=ffffff&fontAlignY=50" width="100%"/>
 
 <br/>
 
 <!-- Badges -->
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![LangGraph](https://img.shields.io/badge/LangGraph-Agentic%20AI-7c5cfc?style=for-the-badge&logo=chainlink&logoColor=white)](https://langchain-ai.github.io/langgraph/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![FAISS](https://img.shields.io/badge/FAISS-Vector%20DB-00bfae?style=for-the-badge&logo=meta&logoColor=white)](https://faiss.ai/)
 [![HuggingFace](https://img.shields.io/badge/HuggingFace-Embeddings-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
@@ -16,7 +15,7 @@
 <br/>
 
 > **An AI-powered assistant that transforms how recruiters and job seekers interact with resumes.**  
-> Built using **LangGraph**, **ChatOllama**, **HuggingFace**, **FAISS**, and **Streamlit** — this tool extracts and analyzes resume content, semantically matches it with job descriptions, generates interview questions, and provides improvement suggestions.
+> Built using **LangChain**, **ChatOllama**, **HuggingFace**, **FAISS**, and **Streamlit** — this tool extracts and analyzes resume content, semantically matches it with job descriptions, generates interview questions, and provides improvement suggestions.
 
 <br/>
 
