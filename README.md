@@ -1,60 +1,148 @@
 <div align="center">
 
-<!-- Animated Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=7c5cfc&height=200&section=header&text=AI%20Recruitment%20Agent&fontSize=48&fontColor=ffffff&fontAlignY=50" width="100%"/>
+<!-- Animated Header Banner -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=AI%20Resume%20Analysis%20Agent&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=35&desc=LLaMA-Powered%20%E2%80%A2%20Local%20%E2%80%A2%20No%20API%20Key%20Required&descAlignY=55&descSize=18" />
 
 <br/>
 
-<!-- Badges -->
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-UI-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![FAISS](https://img.shields.io/badge/FAISS-Vector%20DB-00bfae?style=for-the-badge&logo=meta&logoColor=white)](https://faiss.ai/)
-[![HuggingFace](https://img.shields.io/badge/HuggingFace-Embeddings-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+<!-- Badges Row 1 -->
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![LangChain](https://img.shields.io/badge/LangChain-🦜-1C3C3C?style=for-the-badge)](https://langchain.com)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Ollama](https://img.shields.io/badge/Ollama-LLaMA3-black?style=for-the-badge&logo=llama&logoColor=white)](https://ollama.com)
+[![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-0467DF?style=for-the-badge&logo=meta&logoColor=white)](https://github.com/facebookresearch/faiss)
+
+<!-- Badges Row 2 -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge&logo=github)](CONTRIBUTING.md)
+[![HuggingFace](https://img.shields.io/badge/HuggingFace-Embeddings-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co)
+[![Offline](https://img.shields.io/badge/100%25-Offline%20Ready-success?style=for-the-badge&logo=lock&logoColor=white)]()
 
 <br/>
 
-> **An AI-powered assistant that transforms how recruiters and job seekers interact with resumes.**  
-> Built using **LangChain**, **ChatOllama**, **HuggingFace**, **FAISS**, and **Streamlit** — this tool extracts and analyzes resume content, semantically matches it with job descriptions, generates interview questions, and provides improvement suggestions.
+> **🔒 Fully local. Zero cloud dependency. Your resume never leaves your machine.**
 
 <br/>
-
-[🚀 Quick Start](#-quick-start) · [✨ Features](#-features) · [🛠️ Tech Stack](#️-tech-stack) · [📁 Project Structure](#-project-structure) · [🤝 Contributing](#-contributing)
 
 </div>
 
 ---
 
-## ✨ Features
+## 🌟 What Is This?
 
-<table>
-<tr>
-<td width="50%">
+**AI Resume Analysis Agent** is a fully local, LLaMA-powered recruitment intelligence tool that analyzes resumes, matches them against job descriptions, generates interview questions, and suggests improvements — all without sending a single byte to the cloud.
 
-### 📄 Resume Upload & Parsing
-Upload PDF or text resumes and extract key insights — skills, experience, education — in seconds.
+Built with `LangChain`, `FAISS`, `HuggingFace Embeddings`, and `Ollama`, it gives you enterprise-grade resume screening right on your laptop.
 
-### 🔍 Resume Q&A
-Ask custom questions about any resume. Get intelligent, context-aware answers powered by the LangGraph agent pipeline.
+<br/>
 
-### 💡 Resume Improvements
-Receive AI-driven suggestions to improve grammar, structure, impact, and content quality.
+---
 
-</td>
-<td width="50%">
+## ✨ Features at a Glance
 
-### 🎯 Interview Question Generator
-Generates personalized, role-specific interview questions based on the uploaded resume and job description.
+| Feature | Description |
+|---|---|
+| 📄 **Resume Analysis** | Upload PDF, DOCX, or TXT — get instant skill gap analysis |
+| 🧠 **Semantic Skill Matching** | Cosine similarity scoring against JD-extracted skills |
+| ❓ **Resume Q&A (RAG)** | Ask anything about the resume via retrieval-augmented generation |
+| 🎤 **Interview Generator** | Technical, behavioral, HR & situational questions by difficulty |
+| 📈 **Resume Improver** | LLaMA rewrites your resume for target roles, ATS-optimized |
+| 🔍 **JD Skill Extractor** | Automatically parse required skills from any job description |
+| 🧩 **Weakness Analyser** | Deep-dives into missing skills with specific fix suggestions |
+| 💾 **Persistent Vector Store** | FAISS index saved to disk — no re-embedding on reload |
 
-### 🧠 Semantic Matching
-Uses vector embeddings + FAISS to semantically match resume content with job requirements — beyond keyword search.
+<br/>
 
-### 🖥️ Interactive Streamlit UI
-A responsive, user-friendly interface with real-time agent responses and intuitive file uploads.
+---
 
-</td>
-</tr>
-</table>
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        Streamlit UI (app.py / ui.py)            │
+│  ┌──────────────┐ ┌──────────────┐ ┌────────────┐ ┌──────────┐ │
+│  │Resume Upload │ │  Resume Q&A  │ │ Interview  │ │ Improve  │ │
+│  │ + Role Pick  │ │  (RAG Chat)  │ │  Generator │ │ Resume   │ │
+│  └──────┬───────┘ └──────┬───────┘ └─────┬──────┘ └────┬─────┘ │
+└─────────┼────────────────┼───────────────┼─────────────┼────────┘
+          │                │               │             │
+          ▼                ▼               ▼             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    ResumeAnalysisAgent (agent.py)               │
+│                                                                 │
+│  ┌─────────────────┐        ┌──────────────────────────────┐    │
+│  │  Text Extractor  │        │     LLM Layer (ChatOllama)   │    │
+│  │  PDF / DOCX / TXT│───────▶│  llama3 / llama2 / mistral  │    │
+│  └─────────────────┘        └──────────────────────────────┘    │
+│           │                              │                       │
+│           ▼                              ▼                       │
+│  ┌─────────────────┐        ┌──────────────────────────────┐    │
+│  │  Text Chunker    │        │    JD Skill Extractor        │    │
+│  │  (RecursiveText  │        │    (LLaMA → Python list)     │    │
+│  │   Splitter 1000) │        └──────────────────────────────┘    │
+│  └────────┬────────┘                     │                       │
+│           │                              ▼                       │
+│           ▼                  ┌──────────────────────────────┐    │
+│  ┌─────────────────┐        │   Semantic Skill Analyser    │    │
+│  │  HuggingFace     │───────▶│   (Cosine Similarity Score)  │    │
+│  │  Embeddings      │        └──────────────────────────────┘    │
+│  │  all-MiniLM-L6-v2│                                            │
+│  └────────┬────────┘                                             │
+│           │                                                      │
+│           ▼                                                      │
+│  ┌─────────────────────────────────────┐                        │
+│  │           FAISS Vector Store         │                        │
+│  │  (Persisted to disk: faiss_vectorstore/) │                   │
+│  │  Used for: RAG, Q&A, Skill Retrieval │                        │
+│  └─────────────────────────────────────┘                        │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+<br/>
+
+---
+
+## 🔄 Workflow
+
+```
+  User Uploads Resume
+         │
+         ▼
+  ┌─────────────┐
+  │ Text Extract │  ◄── PDF (PyPDF2) / DOCX (Unstructured) / TXT
+  └──────┬──────┘
+         │
+         ▼
+  ┌──────────────────┐
+  │ Chunk & Embed     │  ◄── RecursiveCharacterTextSplitter → HuggingFace Embeddings
+  └──────┬───────────┘
+         │
+         ▼
+  ┌──────────────┐
+  │  FAISS Index  │  ◄── Saved locally for session persistence
+  └──────┬───────┘
+         │
+    ┌────┴──────────────────────────┐
+    │                               │
+    ▼                               ▼
+┌─────────────────┐       ┌───────────────────────┐
+│  Skill Matching  │       │  RAG Q&A Pipeline      │
+│  (Cosine Sim)    │       │  (Similarity Search +  │
+│  vs JD Skills    │       │   LLaMA Context Answer)│
+└────────┬────────┘       └───────────┬────────────┘
+         │                            │
+         ▼                            ▼
+┌─────────────────────────────────────────────────┐
+│           Structured Analysis Output             │
+│  • Skill scores (0–10)                           │
+│  • Matched / Missing skills                      │
+│  • Weakness breakdown with suggestions           │
+│  • Interview questions (by type & difficulty)    │
+│  • Rewritten / improved resume text              │
+└─────────────────────────────────────────────────┘
+```
+
+<br/>
 
 ---
 
@@ -62,179 +150,209 @@ A responsive, user-friendly interface with real-time agent responses and intuiti
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| 🤖 **Agent Orchestration** | [LangGraph](https://langchain-ai.github.io/langgraph/) | Stateful, multi-step agentic workflows |
-| 🗣️ **LLM Backend** | ChatOllama | Local LLM inference |
-| 🔢 **Embeddings** | HuggingFace Transformers | Semantic text representations |
-| 🗄️ **Vector Store** | FAISS | Fast similarity search |
-| 🖼️ **UI** | Streamlit | Interactive web interface |
-| 🐍 **Language** | Python 3.9+ | Core implementation |
-| 📂 **File Handling** | PyMuPDF · python-docx · base64 | PDF & document parsing |
-| 🔡 **NLP Utilities** | NLTK · spaCy *(optional)* | Text preprocessing |
+| **UI** | Streamlit | Multi-tab web interface |
+| **LLM** | Ollama (LLaMA 3 / LLaMA 2) | All text generation & reasoning |
+| **Orchestration** | LangChain | Chains, prompts, document loaders |
+| **Embeddings** | HuggingFace `all-MiniLM-L6-v2` | Local semantic embeddings |
+| **Vector DB** | FAISS | Fast similarity search & RAG |
+| **PDF Parsing** | PyPDF2, LangChain PyPDFLoader | Text extraction from PDFs |
+| **DOCX Parsing** | UnstructuredWordDocumentLoader | Text extraction from Word docs |
+| **Skill Scoring** | scikit-learn (cosine_similarity) | Resume-to-JD semantic matching |
+| **Language** | Python 3.9+ | Core runtime |
+
+<br/>
 
 ---
 
-## 📁 Project Structure
-
-```
-recruitment-agent/
-│
-├── agent.py          # LangGraph agent definition — tools, nodes, graph edges
-├── app.py            # Application logic — resume processing & pipeline orchestration
-├── ui.py             # Streamlit UI — file upload, chat, results rendering
-│
-├── requirements.txt  # Python dependencies
-└── README.md
-```
-
-### Agent Pipeline
-
-```
-User Input
-    │
-    ▼
-┌─────────┐     ┌─────────┐     ┌───────────┐     ┌────────────┐
-│  ui.py  │────▶│  app.py │────▶│  agent.py │────▶│ LangGraph  │
-│ Streamlit│     │ Orchestr│     │  Tools &  │     │  StateGraph│
-└─────────┘     └─────────┘     │   Nodes   │     └─────┬──────┘
-                                 └───────────┘           │
-                                                         ▼
-                                               ┌──────────────────┐
-                                               │  FAISS + ChatOllama│
-                                               │  Embeddings + LLM  │
-                                               └──────────────────┘
-```
-
----
-
-## 🚀 Quick Start
+## 📦 Installation
 
 ### Prerequisites
 
 - Python 3.9+
-- [Ollama](https://ollama.ai/) installed and running locally
-- Git
+- [Ollama](https://ollama.com) installed and running
+- At least one LLaMA model pulled locally
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/recruitment-agent.git
-cd recruitment-agent
+git clone https://github.com/your-username/ai-resume-agent.git
+cd ai-resume-agent
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Pull a local model via Ollama
+<details>
+<summary>📋 Full requirements.txt</summary>
+
+```txt
+streamlit
+langchain
+langchain-community
+langchain-huggingface
+langchain-core
+faiss-cpu
+sentence-transformers
+PyPDF2
+numpy
+scikit-learn
+python-dotenv
+unstructured[docx]
+```
+
+</details>
+
+### 3. Pull a LLaMA Model via Ollama
 
 ```bash
 ollama pull llama3
+# or
+ollama pull llama2
+# or
+ollama pull mistral
 ```
 
-### 4. Launch the app
+### 4. Run the App
 
 ```bash
 streamlit run app.py
 ```
 
-The app will open at `http://localhost:8501` 🎉
+The app will open at `http://localhost:8501` 🚀
+
+<br/>
 
 ---
 
-## 🧩 How It Works
+## 🗂️ Project Structure
 
 ```
-1. Upload Resume (PDF / TXT)
-        │
-        ▼
-2. Document is chunked and embedded via HuggingFace
-        │
-        ▼
-3. Chunks stored in FAISS vector index
-        │
-        ▼
-4. User pastes Job Description
-        │
-        ▼
-5. LangGraph agent runs multi-step pipeline:
-   ├── Tool: SemanticMatcher  → computes JD ↔ resume match score
-   ├── Tool: QuestionGenerator → generates tailored interview Qs
-   ├── Tool: ResumeQA         → answers custom user questions
-   └── Tool: ImprovementAgent → suggests resume enhancements
-        │
-        ▼
-6. Results rendered in Streamlit UI
+ai-resume-agent/
+│
+├── app.py                  # Main Streamlit app — routing & tab logic
+├── agent.py                # Core ResumeAnalysisAgent class
+├── ui.py                   # UI rendering helpers & layout
+│
+├── faiss_vectorstore/      # Persisted FAISS index (auto-created)
+├── resume_faiss_index/     # Secondary FAISS index for resume RAG
+│
+├── requirements.txt
+└── README.md
 ```
+
+<br/>
 
 ---
 
-## 📦 Requirements
+## 🎯 Supported Roles
 
-```txt
-langgraph
-langchain-community
-langchain-ollama
-streamlit
-faiss-cpu
-sentence-transformers
-transformers
-PyMuPDF
-python-docx
-nltk
-```
+The agent ships with pre-loaded skill requirements for 7 engineering tracks:
 
-Install all at once:
+| Role | Key Skills Checked |
+|---|---|
+| 🤖 AI/ML Engineer | PyTorch, TensorFlow, NLP, MLOps, Hugging Face... |
+| 🎨 Frontend Engineer | React, TypeScript, Next.js, Tailwind, WebAssembly... |
+| ⚙️ Backend Engineer | Node.js, Kubernetes, gRPC, Microservices, Redis... |
+| 🗄️ Data Engineer | Spark, Kafka, Airflow, Snowflake, BigQuery... |
+| 🚀 DevOps Engineer | Terraform, CI/CD, Prometheus, IaC, Grafana... |
+| 🔐 Cybersecurity Engineer | SIEM, Pen Testing, SOC, IAM, Cryptography... |
+| 🌐 Full Stack Developer | React + Node + MongoDB + Docker + Serverless... |
 
-```bash
-pip install -r requirements.txt
-```
+You can also paste any **custom job description** and the agent will extract skills on the fly using LLaMA.
+
+<br/>
 
 ---
 
-## 🖼️ Screenshots
+## 🖥️ UI Tabs Overview
 
-> _Add screenshots of your Streamlit UI here_
+```
+┌──────────────────────────────────────────────────────────┐
+│  📄 Resume Analysis │ ❓ Resume Q&A │ 🎤 Interview │ 🔍 Improve │
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│  Tab 1 — Upload resume, select role or paste JD,         │
+│           click Analyze → get skill gap + score          │
+│                                                          │
+│  Tab 2 — Ask natural language questions about the        │
+│           resume (RAG-powered, context-aware)            │
+│                                                          │
+│  Tab 3 — Pick question types, difficulty, count →        │
+│           get a tailored interview question set          │
+│                                                          │
+│  Tab 4 — Select weak areas + target role →               │
+│           get an ATS-optimized rewritten resume          │
+│                                                          │
+└──────────────────────────────────────────────────────────┘
+```
 
-| Resume Upload | Semantic Match | Interview Qs |
-|:---:|:---:|:---:|
-| *(screenshot)* | *(screenshot)* | *(screenshot)* |
+<br/>
+
+---
+
+## 🔑 Key Design Decisions
+
+- **100% local inference** — LLaMA runs via Ollama on-device. No OpenAI, no Anthropic, no billing.
+- **FAISS persistence** — Vector store is saved to disk so repeated sessions don't re-embed from scratch.
+- **Dual vector stores** — One for RAG Q&A (`resume_faiss_index`), one for skill retrieval (`faiss_vectorstore`), keeping concerns separated.
+- **Graceful JSON fallback** — LLM weakness analysis attempts structured JSON; falls back to raw text on parse failure.
+- **Semantic scoring** — Skill matching uses cosine similarity on embeddings rather than naive keyword matching, giving far more accurate gap analysis.
+
+<br/>
+
+---
+
+## ⚠️ Known Limitations & Roadmap
+
+| Status | Item |
+|---|---|
+| 🔧 | `generate_interview_questions` references `self.vector_store` but attribute is `self.rag_vectorstore` — needs fix |
+| 🔧 | `create_vector_store` called with and without arguments inconsistently |
+| 🔧 | `analyze_resume_weaknesses` invokes `llm.invoke()` but expects `.strip()` on a `BaseMessage` object |
+| 🗺️ | Add multi-resume batch comparison |
+| 🗺️ | Export improved resume as downloadable PDF/DOCX |
+| 🗺️ | Add scoring dashboard with radar chart visualization |
+| 🗺️ | Support for multilingual resumes |
+| 🗺️ | Plug in Mistral / Phi-3 as alternative local models |
+
+<br/>
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how to get started:
+Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to change.
 
 ```bash
-# 1. Fork the repo and clone your fork
-git clone https://github.com/your-username/recruitment-agent.git
-
-# 2. Create a feature branch
-git checkout -b feature/amazing-feature
-
-# 3. Commit your changes
-git commit -m "feat: add amazing feature"
-
-# 4. Push and open a Pull Request
-git push origin feature/amazing-feature
+# Fork → Clone → Branch → PR
+git checkout -b feature/your-feature-name
+git commit -m "feat: add your feature"
+git push origin feature/your-feature-name
 ```
 
-Please follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages.
+<br/>
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
+
+<br/>
 
 ---
 
 <div align="center">
 
-**Made with ❤️ using LangGraph + Streamlit**
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=twinkling" />
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=7c5cfc&height=100&section=footer" width="100%"/>
+**Built with ❤️ and local LLaMA inference**
+
+*No cloud. No cost. No compromise on privacy.*
+
+[![Star this repo](https://img.shields.io/github/stars/your-username/ai-resume-agent?style=social)](https://github.com/your-username/ai-resume-agent)
 
 </div>
