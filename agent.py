@@ -200,16 +200,6 @@ class ResumeAnalysisAgent:
             # Return the created vector store
             return vectorstore
 
-    def load_documents(self):
-            # Return a list of langchain Document objects
-            from langchain.docstore.document import Document
-            return [
-                Document(page_content="Machine Learning experience with Python and scikit-learn."),
-                Document(page_content="Software engineering with strong backend development skills."),
-                Document(page_content="Experience with cloud platforms like AWS or Azure."),
-                # Add more domain-related documents
-            ]
-
     def load_vector_store(self):
             """Load the vector store from disk if it exists."""
             vectorstore_path = "faiss_vectorstore"
@@ -254,6 +244,7 @@ class ResumeAnalysisAgent:
         except Exception as e:
             print(f"[Skill Analysis Error] {e}")
             return skill, 0, "Unable to analyze skill."
+            
     def analyze_resume_weaknesses(self):
         """Analyze specific weaknesses in the resume based on missing skills using LLaMA"""
         if not self.resume_text or not self.extracted_skills or not self.analysis_result:
@@ -313,10 +304,6 @@ class ResumeAnalysisAgent:
 
         self.resume_weaknesses = weaknesses
         return weaknesses
-
-
-    # from langchain_community.chat_models import ChatOllama
-    # import re
 
     def extract_skills_from_jd(self, jd_text):
         """Extract skills from a job description using LLaMA"""
